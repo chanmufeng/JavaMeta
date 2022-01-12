@@ -2,7 +2,8 @@ package designPattern.proxy.dynamicProxy;
 
 /**
  * @author 蝉沐风
- * @date 2022/1/5
+ * @description 支付接口
+ * @date 2022/1/10
  */
 public interface Payable {
 

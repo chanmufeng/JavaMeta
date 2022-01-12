@@ -1,7 +1,9 @@
-package designPattern.proxy.dynamicProxy.v1;
+package designPattern.proxy.dynamicProxy.v2;
 
 
 import designPattern.proxy.dynamicProxy.Payable;
+
+import java.util.Comparator;
 
 /**
  * @author 蝉沐风
@@ -10,7 +12,7 @@ import designPattern.proxy.dynamicProxy.Payable;
  */
 public class Client {
     public static void main(String[] args) {
-        Payable payable = (Payable) Proxy.newProxyInstance(new MyClassLoader());
+        Payable payable = (Payable) Proxy.newProxyInstance(new MyClassLoader(), Comparator.class);
         payable.pay();
     }
 }
