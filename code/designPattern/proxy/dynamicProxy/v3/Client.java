@@ -1,14 +1,12 @@
-package designPattern.proxy.dynamicProxy.v2;
+package designPattern.proxy.dynamicProxy.v3;
 
 
 import designPattern.proxy.dynamicProxy.Payable;
 
-import java.util.Comparator;
-
 /**
  * @author 蝉沐风
  * @description 调用客户端
- * @date 2022/1/10
+ * @date 2022/1/14
  */
 public class Client {
     public static void main(String[] args) {
