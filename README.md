@@ -4,8 +4,8 @@
 原创文章每周最少两篇，公众号首发文章，[【B站】](https://space.bilibili.com/130763764)首发视频，比博客早一到两篇。
 
 <p align="center">
-    <a href="https://github.com/AobingJava/JavaFamily" target="_blank">
-        <img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g98588lrx2j305k05kgm0.jpg" width=""/>
+    <a href="https://github.com/chanmufeng/JavaMeta" target="_blank">
+        <img src="http://qiniu.chanmufeng.com/2022-01-14-023940.png" width=""/>
     </a>
 </p>
 
