@@ -1,11 +1,11 @@
-package designPattern.proxy.staticProxy;
+package designPattern.proxy.dynamicProxy;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * @author 蝉沐风
- * @description 「四十大盗」金融公司
- * @date 2022/1/5
+ * @description 「四十大盗」金融公司提供的第三方接口，实现了支付接口
+ * @date 2022/1/10
  */
 public class SiShiDaDao implements Payable {
 
