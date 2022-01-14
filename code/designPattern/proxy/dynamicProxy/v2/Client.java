@@ -12,7 +12,7 @@ import java.util.Comparator;
  */
 public class Client {
     public static void main(String[] args) {
-        Payable payable = (Payable) Proxy.newProxyInstance(new MyClassLoader(), Comparator.class);
+        Payable payable = (Payable) Proxy.newProxyInstance(new MyClassLoader(), Payable.class);
         payable.pay();
     }
 }

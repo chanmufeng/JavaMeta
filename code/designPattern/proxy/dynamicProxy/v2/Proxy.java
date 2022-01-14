@@ -62,11 +62,11 @@ public class Proxy {
                 .append("    private ").append(intfce.getSimpleName()).append(" obj;").append(ln)
                 .append("    public $Proxy0(").append(intfce.getSimpleName()).append(" obj) {").append(ln)
                 .append("        this.obj = obj;").append(ln)
-                .append("    }").append(ln)
+                .append("    }").append(ln).append(ln)
 
                 .append(generateMethodsSrc(intfce))
 
-                .append("}").append(ln);
+                .append("}").append(ln).append(ln);
 
         System.out.println(sb.toString());
         return sb.toString();
@@ -86,11 +86,11 @@ public class Proxy {
             for (int i = 0; i < params.length; i++) {
                 Class clazz = params[i];
                 String type = clazz.getName();
-                String paramName = toLowerFirstCase(clazz.getSimpleName());
+                String paramName = toLowerFirstCase(clazz.getSimpleName()) + i;
                 paramNames.append(type + " " + paramName);
                 paramValues.append(paramName);
                 paramClasses.append(clazz.getName() + ".class");
-                if (i > 0 && i < params.length - 1) {
+                if (i < params.length - 1) {
                     paramNames.append(",");
                     paramValues.append(",");
                     paramClasses.append(",");
@@ -101,9 +101,9 @@ public class Proxy {
                     .append("(").append(paramNames).append("){").append(ln);
 
             sb.append("        System.out.println(\"打印日志1\");").append(ln)
-                    .append("        obj.").append(m.getName()).append("();").append(ln)
+                    .append("        obj.").append(m.getName()).append("(").append(paramValues).append(");").append(ln)
                     .append("        System.out.println(\"打印日志2\");").append(ln)
-                    .append("    }").append(ln);
+                    .append("    }").append(ln).append(ln);
 
         }
 
