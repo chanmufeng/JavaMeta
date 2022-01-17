@@ -11,7 +11,11 @@ public class LogInvocationHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object target, Method m, Object[] args) throws Throwable {
-        return null;
+        before();
+        Object res = m.invoke(target, args);
+        after();
+
+        return res;
     }
 
     private void before() {

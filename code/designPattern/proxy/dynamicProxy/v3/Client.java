@@ -10,8 +10,8 @@ import designPattern.proxy.dynamicProxy.Payable;
  */
 public class Client {
     public static void main(String[] args) {
-        Payable payable = (Payable) Proxy.newProxyInstance(new MyClassLoader(), Comparable.class);
-        payable.pay();
+        Payable payable = (Payable) Proxy.newProxyInstance(new MyClassLoader(), Payable.class,new LogInvocationHandler());
+//        payable.pay();
     }
 }
 

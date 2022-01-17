@@ -9,7 +9,7 @@ public class Person {
 
     private String name = "chanmufeng";
     private int age;
-    private final double salary = 100;
+    private final double salary = 123.4;
     private static String address;
     private final static String cat = "陀螺";
     private static Object obj = new Object();

@@ -12,6 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author 蝉沐风
@@ -23,7 +25,8 @@ public class Proxy {
     //定义换行符
     private static final String ln = "\r\n";
 
-    public static Object newProxyInstance(ClassLoader classLoader, Class intfce) {
+    public static Object newProxyInstance(ClassLoader classLoader, Class intfce, InvocationHandler h) {
+
         try {
 
             /** 1.生成源代码 **/
@@ -37,10 +40,10 @@ public class Proxy {
 
             /** 4.类加载器将.class文件加载到JVM **/
             Class proxyClass = classLoader.loadClass("$Proxy0");
-            Constructor proxyConstructor = proxyClass.getConstructor(intfce);
+            Constructor proxyConstructor = proxyClass.getConstructor(InvocationHandler.class);
             file.delete();
-            Payable p = (Payable) proxyConstructor.newInstance(new SiShiDaDao());
-            return p;
+
+            return proxyConstructor.newInstance(h);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,10 +61,11 @@ public class Proxy {
         StringBuilder sb = new StringBuilder();
         sb.append("package designPattern.proxy.dynamicProxy.v2;").append(ln)
                 .append("import ").append(packageName).append(";").append(ln)
+                .append("import java.lang.reflect.*;").append(ln)
                 .append("public class $Proxy0 implements ").append(intfce.getName()).append(" { ").append(ln)
-                .append("    private ").append(intfce.getSimpleName()).append(" obj;").append(ln)
-                .append("    public $Proxy0(").append(intfce.getSimpleName()).append(" obj) {").append(ln)
-                .append("        this.obj = obj;").append(ln)
+                .append("    private InvocationHandler h;").append(ln)
+                .append("    public $Proxy0(InvocationHandler h) {").append(ln)
+                .append("        this.h = h;").append(ln)
                 .append("    }").append(ln).append(ln)
 
                 .append(generateMethodsSrc(intfce))
@@ -100,14 +104,43 @@ public class Proxy {
             sb.append("    public ").append(m.getReturnType().getName()).append(" ").append(m.getName())
                     .append("(").append(paramNames).append("){").append(ln);
 
-            sb.append("        System.out.println(\"打印日志1\");").append(ln)
-                    .append("        obj.").append(m.getName()).append("(").append(paramValues).append(");").append(ln)
-                    .append("        System.out.println(\"打印日志2\");").append(ln)
-                    .append("    }").append(ln).append(ln);
+            sb.append("        Method m = ").append(intfce.getName()).append(".class.getMethod(").append("\"" + m.getName() + "\",").append("new Class[]{").append(paramClasses.toString()).append("});").append(ln);
+            sb.append(hasReturnValue(m.getReturnType()) ? "        return " : "        ").append(getReturnCode("this.h.invoke(this,m,new Object[]{" + paramValues + "})", m.getReturnType())).append(";").append(ln);
+
+            sb.append(getReturnEmptyCode(m.getReturnType()));
+
+            sb.append("    }").append(ln).append(ln);
 
         }
 
         return sb;
+    }
+
+    private static Map<Class, Class> mappings = new HashMap<Class, Class>();
+
+    static {
+        mappings.put(int.class, Integer.class);
+    }
+
+    private static String getReturnEmptyCode(Class<?> returnClass) {
+        if (mappings.containsKey(returnClass)) {
+            return "return 0;";
+        } else if (returnClass == void.class) {
+            return "";
+        } else {
+            return "return null;";
+        }
+    }
+
+    private static boolean hasReturnValue(Class<?> clazz) {
+        return clazz != void.class;
+    }
+
+    private static String getReturnCode(String code, Class<?> returnClass) {
+        if (mappings.containsKey(returnClass)) {
+            return "((" + mappings.get(returnClass).getName() + ")" + code + ")." + returnClass.getSimpleName() + "Value()";
+        }
+        return code;
     }
 
     private static String toLowerFirstCase(String src) {
