@@ -9,8 +9,15 @@ import java.lang.reflect.Method;
  */
 public class LogInvocationHandler implements InvocationHandler {
 
+    // 被代理对象
+    private Object target;
+
+    public LogInvocationHandler(Object target) {
+        this.target = target;
+    }
+
     @Override
-    public Object invoke(Object target, Method m, Object[] args) throws Throwable {
+    public Object invoke(Object proxy, Method m, Object[] args) throws Throwable {
         before();
         Object res = m.invoke(target, args);
         after();

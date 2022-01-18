@@ -59,7 +59,7 @@ public class Proxy {
         String packageName = intfce.getPackage().getName() + "." + intfce.getSimpleName();
 
         StringBuilder sb = new StringBuilder();
-        sb.append("package designPattern.proxy.dynamicProxy.v2;").append(ln)
+        sb.append("package designPattern.proxy.dynamicProxy.v3;").append(ln)
                 .append("import ").append(packageName).append(";").append(ln)
                 .append("import java.lang.reflect.*;").append(ln)
                 .append("public class $Proxy0 implements ").append(intfce.getName()).append(" { ").append(ln)
@@ -103,12 +103,12 @@ public class Proxy {
 
             sb.append("    public ").append(m.getReturnType().getName()).append(" ").append(m.getName())
                     .append("(").append(paramNames).append("){").append(ln);
-
-            sb.append("        Method m = ").append(intfce.getName()).append(".class.getMethod(").append("\"" + m.getName() + "\",").append("new Class[]{").append(paramClasses.toString()).append("});").append(ln);
-            sb.append(hasReturnValue(m.getReturnType()) ? "        return " : "        ").append(getReturnCode("this.h.invoke(this,m,new Object[]{" + paramValues + "})", m.getReturnType())).append(";").append(ln);
+            sb.append("        try{").append(ln);
+            sb.append("            Method m = ").append(intfce.getName()).append(".class.getMethod(").append("\"" + m.getName() + "\",").append("new Class[]{").append(paramClasses.toString()).append("});").append(ln);
+            sb.append(hasReturnValue(m.getReturnType()) ? "            return " : "            ").append(getReturnCode("this.h.invoke(this,m,new Object[]{" + paramValues + "})", m.getReturnType())).append(";").append(ln);
 
             sb.append(getReturnEmptyCode(m.getReturnType()));
-
+            sb.append("        }catch(Throwable e){}").append(ln);
             sb.append("    }").append(ln).append(ln);
 
         }
