@@ -1,4 +1,4 @@
-package designPattern.proxy.dynamicProxy.v3;
+package designPattern.proxy.dynamicProxy.v4;
 
 
 import designPattern.proxy.dynamicProxy.Payable;

@@ -38,6 +38,8 @@ public class Proxy {
             Class proxyClass = classLoader.loadClass("SiShiDaDaoLogProxy");
             Constructor proxyConstructor = proxyClass.getConstructor(Payable.class);
             file.delete();
+
+            /** 5.反射进行实例化对象 **/
             Payable p = (Payable) proxyConstructor.newInstance(new SiShiDaDao());
             return p;
 

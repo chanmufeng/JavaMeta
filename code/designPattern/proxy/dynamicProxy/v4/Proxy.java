@@ -1,8 +1,5 @@
-package designPattern.proxy.dynamicProxy.v3;
+package designPattern.proxy.dynamicProxy.v4;
 
-
-import designPattern.proxy.dynamicProxy.Payable;
-import designPattern.proxy.dynamicProxy.SiShiDaDao;
 
 import javax.tools.JavaCompiler;
 import javax.tools.StandardJavaFileManager;
@@ -17,7 +14,7 @@ import java.util.Map;
 
 /**
  * @author 蝉沐风
- * @description 动态代理v3
+ * @description 动态代理v4
  * @date 2022/1/14
  */
 public class Proxy {
@@ -59,7 +56,7 @@ public class Proxy {
         String packageName = intfce.getPackage().getName() + "." + intfce.getSimpleName();
 
         StringBuilder sb = new StringBuilder();
-        sb.append("package designPattern.proxy.dynamicProxy.v3;").append(ln)
+        sb.append("package designPattern.proxy.dynamicProxy.v4;").append(ln)
                 .append("import ").append(packageName).append(";").append(ln)
                 .append("import java.lang.reflect.*;").append(ln)
                 .append("public class $Proxy0 implements ").append(intfce.getName()).append(" { ").append(ln)
@@ -105,7 +102,7 @@ public class Proxy {
                     .append("(").append(paramNames).append("){").append(ln);
             sb.append("        try{").append(ln);
             sb.append("            Method m = ").append(intfce.getName()).append(".class.getMethod(").append("\"" + m.getName() + "\",").append("new Class[]{").append(paramClasses.toString()).append("});").append(ln);
-            sb.append(hasReturnValue(m.getReturnType()) ? "            return " : "            ").append(getReturnCode("this.h.invoke(m,new Object[]{" + paramValues + "})", m.getReturnType())).append(";").append(ln);
+            sb.append(hasReturnValue(m.getReturnType()) ? "            return " : "            ").append(getReturnCode("this.h.invoke(this, m, new Object[]{" + paramValues + "})", m.getReturnType())).append(";").append(ln);
 
             sb.append(getReturnEmptyCode(m.getReturnType()));
             sb.append("        }catch(Throwable e){}").append(ln);

@@ -1,4 +1,4 @@
-package designPattern.proxy.dynamicProxy.v3;
+package designPattern.proxy.dynamicProxy.v4;
 
 import java.lang.reflect.Method;
 
@@ -17,7 +17,7 @@ public class LogInvocationHandler implements InvocationHandler {
     }
 
     @Override
-    public Object invoke(Method m, Object[] args) throws Throwable {
+    public Object invoke(Object proxy, Method m, Object[] args) throws Throwable {
         before();
         Object res = m.invoke(target, args);
         after();
