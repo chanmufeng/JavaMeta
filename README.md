@@ -39,7 +39,7 @@
     - [单例模式](http://mp.weixin.qq.com/s?__biz=MzI1MDU0MTc2MQ==&mid=2247483833&idx=1&sn=dc1b81cbf43f90f8508ae8cf56c6a4d5&chksm=e981e217def66b014c3b790d158bedbf1c0e11103f5b0a17054b9f4156a997b21742d9d3a6a9#rd)
     - [工厂模式](http://mp.weixin.qq.com/s?__biz=MzI1MDU0MTc2MQ==&mid=2247483926&idx=1&sn=a7a73e39789cfdfb026ae85546719af0&chksm=e981e1b8def668aec4698bc2ab6382df69e432af3ea74f7bb5e89bddf6134f5518faed3a7ed6#rd)
     - [静态代理模式](https://mp.weixin.qq.com/s?__biz=MzI1MDU0MTc2MQ==&mid=2247484008&idx=1&sn=a69b9fd62b29e0e6bdfccfc00f614e33&chksm=e981e1c6def668d03374bb51108e480a70eb39bb1a0f6b9dd967fd13a7d14834d35bade414fd#rd)
-    - 动态代理模式
+    - [动态代理模式](https://mp.weixin.qq.com/s?__biz=MzI1MDU0MTc2MQ==&mid=2247484040&idx=1&sn=fcd9120109d54683ec938d7304f8b928&chksm=e981e126def668309b880ad54310c560990b091dc45a3c95f8fa61042ea5aa338ccd11034548#rd)
     - 建造者模式
     - 原型模式
     - 责任链模式
@@ -50,7 +50,10 @@
     - 迭代器模式
     - 命令模式&中介者模式
     - 对象池模式&解释器模式
-    
+  
+- MySQL
+  - [一条SQL查询语句是如何执行的？](https://mp.weixin.qq.com/s?__biz=MzI1MDU0MTc2MQ==&mid=2247484069&idx=1&sn=d40d90ab9e3041757262be5192a46e9e&chksm=e981e10bdef6681dde2ede9c1293e4b379fb827ab3c7d64ae828311c4ee14e19e20d7537d5f0#rd)
+  - [一条SQL更新语句是如何执行的？](https://mp.weixin.qq.com/s?__biz=MzI1MDU0MTc2MQ==&mid=2247484093&idx=1&sn=f0fb512d536701c3e0ecdbf330fd6f9d&chksm=e981e113def668058493e9102039b45034312946326fca9906744615b4547a364aa7bc445c16#rd)
 - 高性能Redis
     - Redis持久化利器
         - [就这？Redis持久化策略——RDB](http://mp.weixin.qq.com/s?__biz=MzI1MDU0MTc2MQ==&mid=2247483952&idx=1&sn=e9982700a75eae5c2471dcfa459ae3e3&chksm=e981e19edef66888f2da69ce26c164682b552f5ffd838ff027a85f7e1e1f156640c6d55ab6ae#rd)
