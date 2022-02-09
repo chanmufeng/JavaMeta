@@ -6,21 +6,11 @@ package designPatternAndPrinciple.principle.openClose;
  * @date 2022/2/8
  */
 public abstract class CatFood {
-    //猫粮口味
-    private String flavor;
 
     //订购数量
     private Integer count;
 
     public abstract void order();
-
-    public String getFlavor() {
-        return flavor;
-    }
-
-    public void setFlavor(String flavor) {
-        this.flavor = flavor;
-    }
 
     public Integer getCount() {
         return count;
@@ -30,8 +20,7 @@ public abstract class CatFood {
         this.count = count;
     }
 
-    public CatFood(String flavor, Integer count) {
-        this.flavor = flavor;
+    public CatFood(Integer count) {
         this.count = count;
     }
 
