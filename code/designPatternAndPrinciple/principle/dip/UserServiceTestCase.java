@@ -8,18 +8,3 @@ public class UserServiceTestCase extends TestCase{
     }
 
 }
-
-class A{
-    Object b = new B();
-    ...
-}
-
-class B{
-    Object c = new C();
-    Object d = new D();
-    ...
-}
-
-class C{
-    Object d = new D();
-}
