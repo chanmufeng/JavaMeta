@@ -7,7 +7,7 @@ package jvm;
  */
 public class Person {
 
-    private String name = "chanmufeng";
+    private String name = "蝉沐风";
     private int age;
     private final double salary = 123.4;
     private static String address;
